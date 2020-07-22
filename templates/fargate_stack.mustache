@@ -34,7 +34,7 @@ export class {{stack_prefix}}FargateStack extends cdk.Stack {
         {{#parameter_group}}
         {{#cfn}}
         // Create DB Cluster ParameterGroup
-        const clusterParameterGroup = new rds.ClusterParameterGroup(this, 'DBClusterPG', {
+        const clusterParameterGroup = new rds.ParameterGroup(this, 'DBClusterPG', {
             description: '{{description}}',
             family: '{{family}}',
             parameters: {
@@ -46,7 +46,7 @@ export class {{stack_prefix}}FargateStack extends cdk.Stack {
         {{/cfn}}
         {{#name}}
         // Import DB cluster ParameterGroup
-        const clusterParameterGroup = rds.ClusterParameterGroup.fromParameterGroupName(
+        const clusterParameterGroup = rds.ParameterGroup.fromParameterGroupName(
             this, 'DBClusterPG', '{{.}}');
         {{/name}}
         {{/parameter_group}}
